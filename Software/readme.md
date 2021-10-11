@@ -6,6 +6,6 @@
   
 <br><br><br>  
 Reference:
+- [HIDAPI](https://github.com/libusb/hidapi) HIDAPI library
 - [CXXOptions](https://github.com/jarro2783/cxxopts) C++ command line options parser
-
 - [HidApiTester](github.com/todbot) Tod's HIDAPI commandline tool
