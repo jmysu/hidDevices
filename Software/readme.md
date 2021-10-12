@@ -2,7 +2,15 @@
 
 - hidQtCmd  <br>
   A Qt framework command line tool for hidTCS color sensor project <br>
-  <img src="pic/hidQtCmd.png" width=320> <br>
+  <img src="pic/hidQtCmd.png" width=640> <br>
+  <br>
+- hidQtTcs <br>
+  A Qt GUI for hidTCS color sensor <br>
+  <img src="pic/hidQtTCS_HID.png" width=320> <img src="pic/hidQtTCS_LED.png" width=320> <br>
+  <img src="pic/hidQtTCS_TCS.png" width=320> <img src="pic/hidQtTCS_CIE.png" width=320> <br>
+  <br>
+  
+  
   
 <br><br><br>  
 Reference:
