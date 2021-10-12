@@ -1,0 +1,65 @@
+/*
+
+   最小二乘法 求色彩还原矩阵
+
+ */
+
+int calc_ccm(double *r, double *g, double *b, double *R, double *G, double *B, int num, double *ccm)
+{
+    double sum_rr=0, sum_gg=0, sum_bb=0, sum_rg=0, sum_gb=0, sum_rb=0;
+    double sum_rR=0, sum_gR=0, sum_bR=0, sum_rG=0, sum_gG=0, sum_bG=0, sum_rB=0, sum_gB=0, sum_bB=0;
+    int i, j;
+
+    for (i=0; i<num; i++)
+    {
+        sum_rr += r[i]*r[i];
+        sum_gg += g[i]*g[i];
+        sum_bb += b[i]*b[i];
+        sum_rg += r[i]*g[i];
+        sum_gb += g[i]*b[i];
+        sum_rb += r[i]*b[i];
+        sum_rR += r[i]*R[i];
+        sum_gR += g[i]*R[i];
+        sum_bR += b[i]*R[i];
+        sum_rG += r[i]*G[i];
+        sum_gG += g[i]*G[i];
+        sum_bG += b[i]*G[i];
+        sum_rB += r[i]*B[i];
+        sum_gB += g[i]*B[i];
+        sum_bB += b[i]*B[i];
+    }
+    double sum_r2b2_rb2 = sum_rr*sum_bb - sum_rb*sum_rb;
+    double sum_r2g2_rg2 = sum_rr*sum_gg - sum_rg*sum_rg;
+    double sum_g2b2_gb2 = sum_gg*sum_bb - sum_gb*sum_gb;
+    double sum_rgrb_r2gb = sum_rg*sum_rb - sum_rr*sum_gb;
+    double sum_rggb_g2rb = sum_rg*sum_gb - sum_gg*sum_rb;
+    double sum_gbrb_b2rg = sum_gb*sum_rb - sum_bb*sum_rg;
+    double q = sum_rr*sum_gg*sum_bb - sum_rr*sum_gb*sum_gb - sum_gg*sum_rb*sum_rb
+        - sum_bb*sum_rg*sum_rg + 2*sum_rg*sum_rb*sum_gb;
+
+    ccm[0] = (sum_g2b2_gb2*sum_rR + sum_gbrb_b2rg*sum_gR + sum_rggb_g2rb*sum_bR)/q;
+    ccm[1] = (sum_gbrb_b2rg*sum_rR + sum_r2b2_rb2*sum_gR + sum_rgrb_r2gb*sum_bR)/q;
+    ccm[2] = (sum_rggb_g2rb*sum_rR + sum_rgrb_r2gb*sum_gR + sum_r2g2_rg2*sum_bR)/q;
+    ccm[3] = (sum_g2b2_gb2*sum_rG + sum_gbrb_b2rg*sum_gG + sum_rggb_g2rb*sum_bG)/q;
+    ccm[4] = (sum_gbrb_b2rg*sum_rG + sum_r2b2_rb2*sum_gG + sum_rgrb_r2gb*sum_bG)/q;
+    ccm[5] = (sum_rggb_g2rb*sum_rG + sum_rgrb_r2gb*sum_gG + sum_r2g2_rg2*sum_bG)/q;
+    ccm[6] = (sum_g2b2_gb2*sum_rB + sum_gbrb_b2rg*sum_gB + sum_rggb_g2rb*sum_bB)/q;
+    ccm[7] = (sum_gbrb_b2rg*sum_rB + sum_r2b2_rb2*sum_gB + sum_rgrb_r2gb*sum_bB)/q;
+    ccm[8] = (sum_rggb_g2rb*sum_rB + sum_rgrb_r2gb*sum_gB + sum_r2g2_rg2*sum_bB)/q;
+
+    //normalize
+    for (i=0; i<3; i++)
+    {
+        double scale = 0;
+        for (j=0; j<3; j++)
+        {
+            scale += ccm[i*3+j];
+        }
+        for (j=0; j<3; j++)
+        {
+            ccm[i*3+j] /= scale;
+        }
+    }
+
+    return 0;
+}

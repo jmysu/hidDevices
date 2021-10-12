@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>USB.icns</file>
+        <file>KL58Vaccin.jpg</file>
+        <file>CIExy1931.png</file>
+        <file>CIExy1931_400x440.png</file>
+        <file>Macbeth24.svg</file>
+        <file>light0_256.png</file>
+        <file>light1_256.png</file>
+        <file>colortemp.png</file>
+        <file>ColorTemperature.png</file>
+        <file>connect0.png</file>
+        <file>connect1.png</file>
+    </qresource>
+</RCC>

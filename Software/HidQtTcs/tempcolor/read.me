@@ -1,0 +1,8 @@
+tempcolor is an Arduino library that converts light temperatures to light color codes for ws2811/2 addressable LEDs using 3rd-order approximations of blackbody radiator data provided by Mitch Charity at Vendian (http://www.vendian.org/mncharity/dir3/blackbody/).
+
+User provides two values:
+-light temperature: can be integer value of actual temperature in Kelvin (1000,40000) or float value (-1,1) indicating (cold,hot), respectively
+-light brightness: can be integer value (0,255) or float value (0.0,1.0)
+Function returns 32-bit unsigned integer equal to 24-bit RBG code.
+
+Written by Travis Llado, 2016
